@@ -161,8 +161,8 @@ export default function PrimerLanding() {
         <div className="mt-8 grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
           {[
             { n: "권도균", r: "CEO / Founder", b: "이니시스 창업, 연쇄창업가" },
-            { n: "이기하", r: "Partner", b: "Sazze 공동창업" },
-            { n: "이택경", r: "Partner", b: "다음 공동창업" },
+            { n: "노태준", r: "Partner", b: "전 당근마켓" },
+            { n: "설은서", r: "Partner", b: "전 이오스튜디오" },
           ].map((m, i) => (
             <div key={i} className="rounded-2xl border border-white/10 bg-white/5 p-5">
               <div className="aspect-square rounded-xl bg-zinc-900/60 border border-white/10 mb-4 flex items-center justify-center text-sm text-zinc-400">
