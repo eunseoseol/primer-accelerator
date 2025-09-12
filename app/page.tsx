@@ -126,25 +126,32 @@ export default function PrimerLanding() {
         </div>
       </section>
 
-      {/* TEAM */}
-      <section id="team" className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-20">
-        <h2 className="text-2xl sm:text-3xl font-semibold">Team</h2>
-        <p className="mt-3 text-zinc-300">선배 창업가 출신 파트너들이 동행합니다.</p>
-        <div className="mt-8 grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
-          {[
-            { n: "권도균", r: "CEO / Founder", b: "이니시스 창업, 연쇄창업가" },
-            { n: "노태준", r: "Partner", b: "전 당근마켓" },
-            { n: "설은서", r: "Partner", b: "전 이오스튜디오" },
-          ].map((m, i) => (
-            <div key={i} className="rounded-2xl border border-white/10 bg-white/5 p-5">
-              <div className="aspect-square rounded-xl bg-zinc-900/60 border border-white/10 mb-4 flex items-center justify-center text-sm text-zinc-400">사진</div>
-              <p className="font-medium">{m.n}</p>
-              <p className="text-sm text-zinc-400">{m.r}</p>
-              <p className="mt-2 text-sm text-zinc-400">{m.b}</p>
-            </div>
-          ))}
+   {/* TEAM */}
+<section id="team" className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-20">
+  <h2 className="text-2xl sm:text-3xl font-semibold">Team</h2>
+  <p className="mt-3 text-zinc-300">선배 창업가 출신 파트너들이 동행합니다.</p>
+  <div className="mt-8 grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
+    {[
+      { n: "권도균", r: "CEO / Founder", b: "이니시스 창업, 연쇄창업가", img: "/partner1.png" },
+      { n: "노태준", r: "Partner", b: "전 당근마켓", img: "/partner2.png" },
+      { n: "설은서", r: "Partner", b: "전 이오스튜디오", img: "/partner3.png" },
+    ].map((m, i) => (
+      <div key={i} className="rounded-2xl border border-white/10 bg-white/5 p-5">
+        <div className="aspect-square rounded-xl bg-zinc-900/60 border border-white/10 mb-4 flex items-center justify-center overflow-hidden">
+          {m.img ? (
+            <img src={m.img} alt={m.n} className="object-cover h-full w-full" />
+          ) : (
+            <span className="text-sm text-zinc-400">사진</span>
+          )}
         </div>
-      </section>
+        <p className="font-medium">{m.n}</p>
+        <p className="text-sm text-zinc-400">{m.r}</p>
+        <p className="mt-2 text-sm text-zinc-400">{m.b}</p>
+      </div>
+    ))}
+  </div>
+</section>
+
 
       {/* MEDIA */}
       <section id="media" className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-20">
