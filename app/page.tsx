@@ -185,4 +185,19 @@ export default function PrimerLanding() {
           <div className="flex items-center gap-6">
             <a href="mailto:info@primer.kr" className="hover:text-white">info@primer.kr</a>
             <a href="https://www.instagram.com/primer.ac.kr/" target="_blank" className="hover:text-white">Instagram</a>
-      
+            <a href="#top" className="hover:text-white">Back to top</a>
+          </div>
+        </div>
+      </footer>
+    </main>
+  );
+}
+
+function Stat({ k, v }: { k: string; v: string }) {
+  return (
+    <div className="rounded-2xl border border-white/10 bg-white/5 p-4">
+      <dt className="text-sm text-zinc-400">{k}</dt>
+      <dd className="text-xl font-semibold mt-1">{v}</dd>
+    </div>
+  );
+}
