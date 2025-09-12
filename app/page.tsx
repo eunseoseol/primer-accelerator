@@ -153,25 +153,33 @@ export default function PrimerLanding() {
 </section>
 
 
-      {/* MEDIA */}
-      <section id="media" className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-20">
-        <div className="rounded-3xl border border-white/10 bg-white/[0.04] p-8">
-          <h2 className="text-2xl sm:text-3xl font-semibold">Media</h2>
-          <p className="mt-3 text-zinc-300">데모데이, 인터뷰, 칼럼 등 최신 소식을 확인하세요.</p>
-          <div className="mt-6 grid sm:grid-cols-3 gap-4">
-            {[
-              { t: "Instagram", u: "https://www.instagram.com/primer.ac.kr/" },
-              { t: "YouTube (클립)", u: "https://www.youtube.com/results?search_query=%ED%94%84%EB%9D%BC%EC%9D%B4%EB%A8%B8+demoday" },
-              { t: "Platum 기사", u: "https://platum.kr/archives/213915" },
-            ].map((x, i) => (
-              <a key={i} href={x.u} className="rounded-2xl border border-white/10 bg-white/5 p-4 hover:bg-white/10">
-                <p className="font-medium">{x.t}</p>
-                <p className="text-sm text-zinc-400">바로가기</p>
-              </a>
-            ))}
-          </div>
+     {/* MEDIA */}
+<section id="media" className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-20">
+  <div className="rounded-3xl border border-white/10 bg-white/[0.04] p-8">
+    <h2 className="text-2xl sm:text-3xl font-semibold">Media</h2>
+    <p className="mt-3 text-zinc-300">데모데이, 인터뷰, 칼럼 등 최신 소식을 확인하세요.</p>
+
+    <div className="mt-6 grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
+      {[
+        "https://www.youtube.com/embed/pHXlF9DDLBk?si=eJ1AxuopJldeCfaW",
+        "https://www.youtube.com/embed/xiFz2tdJGUA?si=vJ6F6zirz4ZGlaaG",
+        "https://www.youtube.com/embed/6AiWm3wxzQM?si=sGkVIJPxxLq3LBrw",
+        "https://www.youtube.com/embed/PrMRigYVpg8?si=vJuyIx1I_0t8tchX",
+      ].map((url, i) => (
+        <div key={i} className="aspect-video rounded-xl overflow-hidden border border-white/10">
+          <iframe
+            src={url}
+            className="w-full h-full"
+            title={`Primer media ${i + 1}`}
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+            allowFullScreen
+          />
         </div>
-      </section>
+      ))}
+    </div>
+  </div>
+</section>
+
 
       {/* APPLY CTA */}
       <section id="apply" className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-20">
