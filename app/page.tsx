@@ -1,19 +1,19 @@
 export default function PrimerLanding() {
   const portfolio = [
     { n: "ODK Media", d: "아시아 영상 퍼블리싱", img: "/logos/odk.png" },
-    { n: "StyleShare", d: "패션 SNS 기반 커머스 (무신사 매각)", img: "/logos/styleshare.png" },
+    { n: "StyleShare", d: "패션 SNS 기반 커머스 (무신사 매각)", img: "/styleshare.png" },
     { n: "MyRealTrip", d: "현지 여행 마켓", img: "/myrealtrip.png" },
-    { n: "Bungaejangter", d: "중고거래 (네이버)", img: "/logos/bungae.png" },
-    { n: "Dailyhotel", d: "호텔 예약 (야놀자)", img: "/logos/dailyhotel.png" },
-    { n: "Soomgo", d: "전문가 매칭", img: "/logos/soomgo.png" },
+    { n: "Bungaejangter", d: "중고거래 (네이버)", img: "/bungae.png" },
+    { n: "Dailyhotel", d: "호텔 예약 (야놀자)", img: "/dailyhotel.png" },
+    { n: "Soomgo", d: "전문가 매칭", img: "/soomgo.png" },
     { n: "Idus", d: "수공예 마켓", img: "/logos/idus.png" },
     { n: "Hogangnono", d: "아파트 실거래 (직방)", img: "/logos/hogangnono.png" },
-    { n: "Modusign", d: "전자계약", img: "/logos/modusign.png" },
+    { n: "Modusign", d: "전자계약", img: "/modusign.png" },
     { n: "Miso", d: "홈서비스", img: "/logos/miso.png" },
     { n: "Seoltab", d: "실시간 수학 질문", img: "/logos/seoltab.png" },
     { n: "3.3", d: "세금 환급", img: "/logos/33.png" },
     { n: "RAEL", d: "D2C 이커머스", img: "/logos/rael.png" },
-    { n: "Laftel", d: "애니·만화 (리디)", img: "/logos/laftel.png" },
+    { n: "Laftel", d: "애니·만화 (리디)", img: "/laftel.png" },
     { n: "Upstage", d: "Enterprise AI", img: "/logos/upstage.png" },
   ];
 
