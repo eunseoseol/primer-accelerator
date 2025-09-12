@@ -185,4 +185,4 @@ export default function PrimerLanding() {
           <div className="flex items-center gap-6">
             <a href="mailto:info@primer.kr" className="hover:text-white">info@primer.kr</a>
             <a href="https://www.instagram.com/primer.ac.kr/" target="_blank" className="hover:text-white">Instagram</a>
-           
+      
