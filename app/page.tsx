@@ -1,314 +1,295 @@
-"use client";
-
-import { useState } from "react";
-
-export default function PrimerLanding() {
-  // 포트폴리오 데이터: 배치/로고/링크 포함
-  const portfolio = [
-    { n: "ODK Media",   d: "아시아 영상 퍼블리싱",             img: "/logos/odk.png",        url: "https://www.odkmedia.com",        batch: 5 },
-    { n: "StyleShare",   d: "패션 SNS 기반 커머스 (무신사 매각)", img: "/styleshare.png",        url: "https://www.stylesha.re",        batch: 3 },
-    { n: "MyRealTrip",   d: "현지 여행 마켓",                    img: "/myrealtrip.png",        url: "https://www.myrealtrip.com",     batch: 2 },
-    { n: "Bungaejangter",d: "중고거래 (네이버)",                 img: "/bungae.png",            url: "https://m.bunjang.co.kr",        batch: 2 },
-    { n: "Dailyhotel",   d: "호텔 예약 (야놀자)",                 img: "/dailyhotel.png",        url: "https://www.dailyhotel.com",     batch: 2 },
-    { n: "Soomgo",       d: "전문가 매칭",                        img: "/soomgo.png",            url: "https://soomgo.com",             batch: 7 },
-    { n: "Idus",         d: "수공예 마켓",                        img: "/logos/idus.png",        url: "https://idus.com",               batch: 4 },
-    { n: "Hogangnono",   d: "아파트 실거래 (직방)",               img: "/logos/hogangnono.png",  url: "https://hogangnono.com",         batch: 8 },
-    { n: "Modusign",     d: "전자계약",                           img: "/modusign.png",          url: "https://modusign.co.kr",         batch: 9 },
-    { n: "Miso",         d: "홈서비스",                           img: "/logos/miso.png",        url: "https://miso.kr",                batch: 6 },
-    { n: "Seoltab",      d: "실시간 수학 질문",                    img: "/logos/seoltab.png",     url: "https://seoltab.com",            batch: 10 },
-    { n: "3.3",          d: "세금 환급",                           img: "/logos/33.png",          url: "https://www.3o3.co.kr",          batch: 11 },
-    { n: "RAEL",         d: "D2C 이커머스",                        img: "/logos/rael.png",        url: "https://www.getrael.com",        batch: 5 },
-    { n: "Laftel",       d: "애니·만화 (리디)",                    img: "/laftel.png",            url: "https://laftel.net",             batch: 6 },
-    { n: "Upstage",      d: "Enterprise AI",                       img: "/logos/upstage.png",     url: "https://upstage.ai",             batch: 12 },
-  ];
-
-  // 자세히 보기 토글 상태
-  const [showAll, setShowAll] = useState(false);
-
-  // 배치 순서(오름차순)
-  const batches = Array.from(new Set(portfolio.map(p => p.batch))).sort((a, b) => a - b);
+export default function EunseoSeolSite() {
+  const data = {
+    name: "Eunseo Seol",
+    tagline: "Creator · Explorer · Builder",
+    avatar: "/eunseo/avatar.jpg", // put your photo at public/eunseo/avatar.jpg
+    location: "Seoul, KR",
+    email: "hello@eunseoseol.com", // replace
+    socials: [
+      { label: "LinkedIn", href: "https://www.linkedin.com/in/eunseo-seol" },
+      { label: "Instagram", href: "https://instagram.com/yourhandle" },
+      { label: "YouTube", href: "https://youtube.com/@yourhandle" },
+      { label: "X/Twitter", href: "https://x.com/yourhandle" },
+    ],
+    // Music embeds (Spotify/Apple) — replace with your own IDs
+    music: {
+      spotifyArtist: "", // e.g. 1vCWHaC5f2uS3yhpwWbIA6
+      spotifyPlaylist: "", // e.g. 37i9dQZF1DXcBWIGoYBM5M
+      soundcloudUser: "", // optional
+    },
+    // Videos — YouTube video or playlist URLs
+    videos: [
+      { title: "Showreel", url: "https://www.youtube.com/embed/VIDEO_ID" },
+      { title: "Talk: Creativity", url: "https://www.youtube.com/embed/VIDEO_ID" },
+    ],
+    // Books you've read — simple list to start; can be extended with covers
+    books: [
+      { title: "The Creative Act", author: "Rick Rubin" },
+      { title: "Range", author: "David Epstein" },
+      { title: "Atomic Habits", author: "James Clear" },
+    ],
+    // News/RSS — add any RSS feeds you want to surface
+    newsFeeds: [
+      { label: "NYT Tech", url: "https://rss.nytimes.com/services/xml/rss/nyt/Technology.xml" },
+      { label: "Hacker News", url: "https://hnrss.org/frontpage" },
+    ],
+    career: [
+      {
+        company: "Company A",
+        role: "Product Manager",
+        period: "2023 – Present",
+        summary: "Leading 0→1 initiatives across AI-enabled consumer experiences.",
+        tags: ["AI", "Product", "Growth"],
+      },
+      {
+        company: "Company B",
+        role: "Designer",
+        period: "2020 – 2023",
+        summary: "Crafted brand systems and shipped polished mobile UX.",
+        tags: ["Design", "iOS", "Brand"],
+      },
+    ],
+    assets: {
+      photos: [
+        "/eunseo/photos/1.jpg",
+        "/eunseo/photos/2.jpg",
+        "/eunseo/photos/3.jpg",
+        "/eunseo/photos/4.jpg",
+      ],
+      car: { name: "My Car", image: "/eunseo/car.jpg", notes: "EV, weekend trips, range 400km" },
+      home: { name: "My Home", image: "/eunseo/home.jpg", notes: "Cozy, sunlight, plants" },
+    },
+  } as const;
 
   return (
     <main className="min-h-screen bg-zinc-950 text-white selection:bg-white/20">
-      {/* NAVBAR */}
-      <header className="sticky top-0 z-50 backdrop-blur bg-zinc-950/70 border-b border-white/10">
-        <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 h-16 flex items-center justify-between">
-          <a href="#top" className="font-bold tracking-tight text-lg">Primer</a>
-          <nav className="hidden md:flex items-center gap-8 text-sm text-zinc-300">
-            <a href="#about" className="hover:text-white">About</a>
-            <a href="#club" className="hover:text-white">PrimerClub</a>
-            <a href="#portfolio" className="hover:text-white">Portfolio</a>
-            <a href="#team" className="hover:text-white">Team</a>
-            <a href="#media" className="hover:text-white">Media</a>
-            <a href="#apply" className="inline-flex items-center rounded-xl border border-white/20 px-4 py-2 hover:bg-white hover:text-zinc-900 transition">Apply</a>
-          </nav>
-        </div>
-      </header>
+      <Header name={data.name} tagline={data.tagline} socials={data.socials} avatar={data.avatar} />
 
-      {/* HERO */}
-      <section id="top" className="relative overflow-hidden">
-        <div className="absolute -top-32 -left-32 h-[40rem] w-[40rem] rounded-full bg-fuchsia-500/10 blur-3xl" />
-        <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-24 sm:py-28">
-          <p className="text-sm uppercase tracking-widest text-fuchsia-300/80">대한민국 최초 스타트업 액셀러레이터</p>
-          <h1 className="mt-4 text-4xl sm:text-6xl font-bold leading-[1.1]">
-            괴짜들, 부적응자들, 반항아들, 문제아들과 함께<br className="hidden sm:block" /> 창업의 시작을 만들다.
-          </h1>
-          <p className="mt-6 max-w-2xl text-lg text-zinc-300">
-            프라이머는 초기 스타트업에 <span className="text-white">투자</span>와 <span className="text-white">멘토링</span>을 제공합니다. 선배 창업가의
-            경험을 바탕으로 경영의 과학을 실천하며, 후속 투자와 지속 성장을 돕습니다.
-          </p>
-          <div className="mt-8 flex flex-col sm:flex-row gap-3">
-            <a
-              href="#apply"
-              className="inline-flex items-center justify-center rounded-2xl bg-white text-zinc-900 px-6 py-3 font-semibold hover:bg-zinc-200 transition"
-            >
-              PrimerClub 지원하기
-            </a>
-            <a
-              href="#portfolio"
-              className="inline-flex items-center justify-center rounded-2xl border border-white/20 px-6 py-3 font-semibold hover:bg-white/10"
-            >
-              포트폴리오 보기
-            </a>
-          </div>
-          <p className="mt-6 text-sm text-zinc-400">
-            “세상을 바꿀 만큼 미친 사람들이 결국 그 일을 해낸다.” — Think Different
-          </p>
-        </div>
-      </section>
-
-      {/* ABOUT */}
-      <section id="about" className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-20">
-        <div className="grid md:grid-cols-2 gap-10 items-start">
+      <Section id="about" title="About">
+        <div className="grid md:grid-cols-[200px,1fr] gap-6 items-start">
+          <img src={data.avatar} alt={data.name} className="rounded-2xl border border-white/10 object-cover h-48 w-48" />
           <div>
-            <h2 className="text-2xl sm:text-3xl font-semibold">About Primer</h2>
-            <p className="mt-4 text-zinc-300 leading-7">
-              2010년 시작한 프라이머는 한국 스타트업 생태계의 문을 연 1세대 액셀러레이터입니다. 창업 훈련, 초기 투자,
-              멘토십, 네트워크를 통해 창업가가 제품·시장 적합성을 검증하고 빠르게 성장하도록 돕습니다.
+            <p className="text-zinc-300 leading-7">
+              안녕하세요, {data.name}입니다. {data.location}를 기반으로 음악·영상·디자인·제품을 넘나드는 창작 활동을 합니다.
+              이 사이트는 제 작업과 관심사를 한 곳에 모아 소개하는 <span className="text-white">개인 허브</span>예요.
             </p>
-            <ul className="mt-6 space-y-3 text-zinc-300">
-              <li className="flex gap-3"><span className="mt-1 h-1.5 w-1.5 rounded-full bg-fuchsia-400" /> 초기·시드 단계 집중 투자 및 멘토링</li>
-              <li className="flex gap-3"><span className="mt-1 h-1.5 w-1.5 rounded-full bg-fuchsia-400" /> PrimerClub을 통한 동료 창업가 커뮤니티</li>
-              <li className="flex gap-3"><span className="mt-1 h-1.5 w-1.5 rounded-full bg-fuchsia-400" /> 데모데이·오픈세미나·창업가 디너 등 정기 프로그램</li>
-            </ul>
-          </div>
-          <div className="relative rounded-3xl border border-white/10 bg-white/5 p-6 shadow-[0_0_40px_rgba(236,72,153,0.08)]">
-            <dl className="grid grid-cols-2 sm:grid-cols-3 gap-6">
-              <Stat k="Since" v="2010" />
-              <Stat k="Investments" v="200+" />
-              <Stat k="Exits" v="10+" />
-              <Stat k="Batches" v="25+" />
-              <Stat k="Focus" v="IT/소프트웨어" />
-              <Stat k="Location" v="Seoul" />
-            </dl>
-            <p className="mt-6 text-xs text-zinc-400">* 표기는 예시이며 프로젝트에 맞게 수정하세요.</p>
-          </div>
-        </div>
-      </section>
-
-      {/* PRIMER CLUB */}
-      <section id="club" className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-20">
-        <div className="rounded-3xl border border-white/10 bg-gradient-to-b from-white/5 to-white/[0.02] p-8">
-          <div className="grid lg:grid-cols-3 gap-10">
-            <div className="lg:col-span-2">
-              <h2 className="text-2xl sm:text-3xl font-semibold">PrimerClub</h2>
-              <p className="mt-4 text-zinc-300 leading-7">
-                PrimerClub은 잠재력 있는 창업가를 선발하여 소수 정예로 훈련하고 동료 학습과 멘토링을 제공하는 성장 커뮤니티입니다.
-                제품·고객·지표 중심의 실행을 강조하며, 배치 기간 동안 후속 투자 유치와 그로스에 집중합니다.
-              </p>
-              <div className="mt-6 grid sm:grid-cols-3 gap-4">
-                {[
-                  { t: "선발 및 시드 투자", d: "탑다운 평가 + 빠른 의사결정" },
-                  { t: "집중 코칭", d: "주간 1:1/그룹 멘토링" },
-                  { t: "커뮤니티", d: "동료 창업가 네트워크·세미나" },
-                ].map((c, i) => (
-                  <div key={i} className="rounded-2xl border border-white/10 p-4 bg-white/5">
-                    <p className="font-medium">{c.t}</p>
-                    <p className="mt-1 text-sm text-zinc-400">{c.d}</p>
-                  </div>
-                ))}
-              </div>
-            </div>
-            <div className="lg:pl-8">
-              <div className="rounded-2xl border border-white/10 bg-white/5 p-6">
-                <p className="text-sm text-zinc-400">다음 배치</p>
-                <p className="mt-2 text-xl font-semibold">Primer 26기 데모데이</p>
-                <p className="mt-1 text-sm text-zinc-400">신청 오픈 시 웹사이트에서 공지됩니다.</p>
-                <a href="#apply" className="mt-4 inline-flex items-center rounded-xl bg-white text-zinc-900 px-4 py-2 font-medium hover:bg-zinc-200">
-                  지원 안내 받기
-                </a>
-              </div>
+            <div className="mt-4 flex flex-wrap items-center gap-3 text-sm text-zinc-400">
+              <a href={`mailto:${data.email}`} className="rounded-xl border border-white/10 px-3 py-1.5 hover:bg-white hover:text-zinc-900">{data.email}</a>
+              <span className="opacity-60">•</span>
+              <span>{data.location}</span>
             </div>
           </div>
         </div>
-      </section>
+      </Section>
 
-      {/* PORTFOLIO */}
-      <section id="portfolio" className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-20">
-        <div className="flex items-end justify-between">
-          <h2 className="text-2xl sm:text-3xl font-semibold">Portfolio</h2>
-          <div className="flex items-center gap-3">
-            <button
-              onClick={() => setShowAll(v => !v)}
-              className="text-sm rounded-xl border border-white/20 px-3 py-1.5 hover:bg-white hover:text-zinc-900 transition"
-            >
-              {showAll ? "간단히 보기" : "포트폴리오 자세히 보기"}
-            </button>
-            <p className="text-sm text-zinc-400">일부 예시·수정 가능</p>
-          </div>
+      <Section id="photos" title="내 사진">
+        <Masonry images={data.assets.photos} />
+      </Section>
+
+      <Section id="music" title="내 음악">
+        <div className="grid md:grid-cols-2 gap-6">
+          {data.music.spotifyArtist && (
+            <EmbedCard title="Spotify Artist">
+              <iframe
+                className="w-full h-80"
+                src={`https://open.spotify.com/embed/artist/${data.music.spotifyArtist}`}
+                loading="lazy"
+                allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"
+              />
+            </EmbedCard>
+          )}
+          {data.music.spotifyPlaylist && (
+            <EmbedCard title="Spotify Playlist">
+              <iframe
+                className="w-full h-80"
+                src={`https://open.spotify.com/embed/playlist/${data.music.spotifyPlaylist}`}
+                loading="lazy"
+                allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"
+              />
+            </EmbedCard>
+          )}
+          {!data.music.spotifyArtist && !data.music.spotifyPlaylist && (
+            <p className="text-zinc-400">플레이리스트나 아티스트 ID를 설정하면 여기 내장됩니다.</p>
+          )}
         </div>
+      </Section>
 
-        {/* 기본 그리드 / 자세히보기(배치별) 토글 */}
-        {!showAll ? (
-          <div className="mt-8 grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-4">
-            {portfolio.map((p, i) => (
-              <article key={i} className="group rounded-2xl border border-white/10 bg-white/5 p-4 hover:bg-white/10 transition">
-                <div className="aspect-[16/9] rounded-xl bg-zinc-900/60 border border-white/10 mb-3 flex items-center justify-center overflow-hidden">
-                  {p.url ? (
-                    <a href={p.url} target="_blank" rel="noreferrer">
-                      <img src={p.img} alt={p.n} className="object-contain h-full w-full" />
-                    </a>
-                  ) : (
-                    <img src={p.img} alt={p.n} className="object-contain h-full w-full" />
-                  )}
-                </div>
-                <h3 className="font-medium group-hover:text-white">{p.n}</h3>
-                <p className="text-sm text-zinc-400">{p.d}</p>
-              </article>
-            ))}
-          </div>
-        ) : (
-          <div className="mt-8 space-y-10">
-            {batches.map(b => (
-              <div key={b}>
-                <div className="flex items-center justify-between mb-4">
-                  <h3 className="text-xl font-semibold">Primer Batch {b}</h3>
-                  <div className="h-px flex-1 ml-4 bg-white/10" />
-                </div>
-                <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 gap-4">
-                  {portfolio
-                    .filter(p => p.batch === b)
-                    .map((p, i) => (
-                      <article key={`${b}-${i}`} className="group rounded-2xl border border-white/10 bg-white/5 p-4 hover:bg-white/10 transition">
-                        <div className="aspect-[16/9] rounded-xl bg-zinc-900/60 border border-white/10 mb-3 flex items-center justify-center overflow-hidden">
-                          {p.url ? (
-                            <a href={p.url} target="_blank" rel="noreferrer">
-                              <img src={p.img} alt={p.n} className="object-contain h-full w-full" />
-                            </a>
-                          ) : (
-                            <img src={p.img} alt={p.n} className="object-contain h-full w-full" />
-                          )}
-                        </div>
-                        <h4 className="font-medium group-hover:text-white text-sm">{p.n}</h4>
-                        <p className="text-xs text-zinc-400">{p.d}</p>
-                      </article>
-                    ))}
-                </div>
+      <Section id="videos" title="내 영상">
+        <div className="grid sm:grid-cols-2 gap-6">
+          {data.videos.map((v, i) => (
+            <div key={i} className="rounded-2xl border border-white/10 overflow-hidden">
+              <div className="aspect-video">
+                <iframe src={v.url} className="w-full h-full" title={v.title} allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowFullScreen />
               </div>
-            ))}
-          </div>
-        )}
-      </section>
-
-      {/* TEAM */}
-      <section id="team" className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-20">
-        <h2 className="text-2xl sm:text-3xl font-semibold">Team</h2>
-        <p className="mt-3 text-zinc-300">선배 창업가 출신 파트너들이 동행합니다.</p>
-        <div className="mt-8 grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
-          {[
-            { n: "권도균", r: "CEO / Founder", b: "이니시스 창업, 연쇄창업가", img: "/partner1.png" },
-            { n: "노태준", r: "Partner", b: "전 당근마켓", img: "/partner2.png" },
-            { n: "설은서", r: "Partner", b: "전 이오스튜디오", img: "/partner3.png" },
-          ].map((m, i) => (
-            <div key={i} className="rounded-2xl border border-white/10 bg-white/5 p-5">
-              <div className="aspect-square rounded-xl bg-zinc-900/60 border border-white/10 mb-4 flex items-center justify-center overflow-hidden">
-                {m.img ? (
-                  <img src={m.img} alt={m.n} className="object-cover h-full w-full" />
-                ) : (
-                  <span className="text-sm text-zinc-400">사진</span>
-                )}
-              </div>
-              <p className="font-medium">{m.n}</p>
-              <p className="text-sm text-zinc-400">{m.r}</p>
-              <p className="mt-2 text-sm text-zinc-400">{m.b}</p>
+              <div className="p-4 text-sm text-zinc-300">{v.title}</div>
             </div>
           ))}
         </div>
-      </section>
+      </Section>
 
-      {/* MEDIA */}
-      <section id="media" className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-20">
-        <div className="rounded-3xl border border-white/10 bg-white/[0.04] p-8">
-          <h2 className="text-2xl sm:text-3xl font-semibold">Media</h2>
-          <p className="mt-3 text-zinc-300">데모데이, 인터뷰, 칼럼 등 최신 소식을 확인하세요.</p>
+      <Section id="books" title="내가 읽은 책">
+        <ul className="grid sm:grid-cols-2 gap-4">
+          {data.books.map((b, i) => (
+            <li key={i} className="rounded-2xl border border-white/10 p-4 bg-white/5">
+              <p className="font-medium">{b.title}</p>
+              <p className="text-sm text-zinc-400">{b.author}</p>
+            </li>
+          ))}
+        </ul>
+      </Section>
 
-          <div className="mt-6 grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
-            {[
-              "https://www.youtube.com/embed/pHXlF9DDLBk?si=eJ1AxuopJldeCfaW",
-              "https://www.youtube.com/embed/xiFz2tdJGUA?si=vJ6F6zirz4ZGlaaG",
-              "https://www.youtube.com/embed/6AiWm3wxzQM?si=sGkVIJPxxLq3LBrw",
-              "https://www.youtube.com/embed/PrMRigYVpg8?si=vJuyIx1I_0t8tchX",
-            ].map((url, i) => (
-              <div key={i} className="aspect-video rounded-xl overflow-hidden border border-white/10">
-                <iframe
-                  src={url}
-                  className="w-full h-full"
-                  title={`Primer media ${i + 1}`}
-                  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                  allowFullScreen
-                />
+      <Section id="social" title="내 소셜 미디어">
+        <div className="flex flex-wrap gap-3">
+          {data.socials.map((s, i) => (
+            <a key={i} href={s.href} target="_blank" className="rounded-xl border border-white/10 px-4 py-2 hover:bg-white hover:text-zinc-900">
+              {s.label}
+            </a>
+          ))}
+        </div>
+      </Section>
+
+      <Section id="news" title="내 뉴스">
+        <p className="text-zinc-400 mb-4">관심 있는 RSS를 연결해 최신 글을 자동으로 끌어올 수 있어요. (정적 빌드에선 링크로, 서버/클라이언트에서 fetch하면 카드로 표시 가능)</p>
+        <ul className="list-disc list-inside text-zinc-300">
+          {data.newsFeeds.map((n, i) => (
+            <li key={i}><a className="underline decoration-white/20 hover:decoration-white" href={n.url} target="_blank">{n.label}</a></li>
+          ))}
+        </ul>
+      </Section>
+
+      <Section id="career" title="내 커리어">
+        <div className="space-y-4">
+          {data.career.map((c, i) => (
+            <div key={i} className="rounded-2xl border border-white/10 p-4 bg-white/5">
+              <div className="flex items-center justify-between gap-3">
+                <p className="font-medium">{c.role} · {c.company}</p>
+                <p className="text-sm text-zinc-400">{c.period}</p>
               </div>
-            ))}
-          </div>
+              <p className="mt-2 text-zinc-300">{c.summary}</p>
+              <div className="mt-3 flex flex-wrap gap-2">
+                {c.tags.map((t, idx) => (
+                  <span key={idx} className="text-xs rounded-lg border border-white/10 px-2 py-1 text-zinc-400">{t}</span>
+                ))}
+              </div>
+            </div>
+          ))}
         </div>
-      </section>
+      </Section>
 
-      {/* APPLY CTA */}
-      <section id="apply" className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-20">
-        <div className="rounded-3xl border border-white/10 bg-gradient-to-r from-fuchsia-500/10 via-white/5 to-sky-500/10 p-10 text-center">
-          <h2 className="text-2xl sm:text-3xl font-semibold">PrimerClub에 합류하세요</h2>
-          <p className="mt-3 text-zinc-300">
-            창업의 시작, 프라이머와 함께 하세요. 배치 공고 및 지원은 공식 신청 페이지에서 확인할 수 있습니다.
-          </p>
-          <div className="mt-6 flex flex-col sm:flex-row items-center justify-center gap-3">
-            <a
-              href="https://www.primer.kr/"
-              target="_blank"
-              className="inline-flex items-center justify-center rounded-2xl bg-white text-zinc-900 px-6 py-3 font-semibold hover:bg-zinc-200"
-            >
-              공식 웹사이트
-            </a>
-            <a
-              href="https://www.primer.kr/"
-              target="_blank"
-              className="inline-flex items-center justify-center rounded-2xl border border-white/20 px-6 py-3 font-semibold hover:bg-white/10"
-            >
-              신청 페이지
-            </a>
-          </div>
+      <Section id="wheels-n-home" title="내 자동차 · 내 집">
+        <div className="grid md:grid-cols-2 gap-6">
+          <AssetCard title={data.assets.car.name} image={data.assets.car.image} notes={data.assets.car.notes} />
+          <AssetCard title={data.assets.home.name} image={data.assets.home.image} notes={data.assets.home.notes} />
         </div>
-      </section>
+      </Section>
 
-      {/* FOOTER */}
-      <footer className="border-t border-white/10 py-10 text-sm text-zinc-400">
-        <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 flex flex-col sm:flex-row items-center justify-between gap-4">
-          <p>© {new Date().getFullYear()} Primer. All rights reserved.</p>
-          <div className="flex items-center gap-6">
-            <a href="mailto:info@primer.kr" className="hover:text-white">info@primer.kr</a>
-            <a href="https://www.instagram.com/primer.ac.kr/" target="_blank" className="hover:text-white">Instagram</a>
-            <a href="#top" className="hover:text-white">Back to top</a>
-          </div>
-        </div>
-      </footer>
+      <CTA />
+
+      <Footer email={data.email} />
     </main>
   );
 }
 
-function Stat({ k, v }: { k: string; v: string }) {
+function Header({ name, tagline, socials, avatar }: any) {
+  return (
+    <header className="sticky top-0 z-40 backdrop-blur bg-zinc-950/70 border-b border-white/10">
+      <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 h-16 flex items-center justify-between">
+        <a href="#top" className="flex items-center gap-3">
+          <div className="h-8 w-8 rounded-full overflow-hidden border border-white/10 bg-zinc-800">
+            <img src={avatar} alt={name} className="h-full w-full object-cover" />
+          </div>
+          <span className="font-semibold">{name}</span>
+        </a>
+        <nav className="hidden md:flex items-center gap-6 text-sm text-zinc-300">
+          {[
+            ["About", "#about"],
+            ["사진", "#photos"],
+            ["음악", "#music"],
+            ["영상", "#videos"],
+            ["책", "#books"],
+            ["소셜", "#social"],
+            ["뉴스", "#news"],
+            ["커리어", "#career"],
+            ["자차·집", "#wheels-n-home"],
+          ].map(([label, href]) => (
+            <a key={href} href={href} className="hover:text-white">{label}</a>
+          ))}
+        </nav>
+        <p className="hidden sm:block text-sm text-zinc-400">{tagline}</p>
+      </div>
+    </header>
+  );
+}
+
+function Section({ id, title, children }: any) {
+  return (
+    <section id={id} className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-16">
+      <div className="flex items-end justify-between">
+        <h2 className="text-2xl sm:text-3xl font-semibold">{title}</h2>
+      </div>
+      <div className="mt-6">{children}</div>
+    </section>
+  );
+}
+
+function Masonry({ images }: { images: string[] }) {
+  return (
+    <div className="columns-2 md:columns-3 gap-4 [column-fill:_balance]"><div className="contents">
+      {images.map((src, i) => (
+        <img key={i} src={src} alt="photo" className="mb-4 w-full rounded-2xl border border-white/10 hover:scale-[1.01] transition" />
+      ))}
+    </div></div>
+  );
+}
+
+function EmbedCard({ title, children }: any) {
   return (
     <div className="rounded-2xl border border-white/10 bg-white/5 p-4">
-      <dt className="text-sm text-zinc-400">{k}</dt>
-      <dd className="text-xl font-semibold mt-1">{v}</dd>
+      <p className="mb-3 text-sm text-zinc-400">{title}</p>
+      {children}
     </div>
+  );
+}
+
+function AssetCard({ title, image, notes }: { title: string; image: string; notes?: string }) {
+  return (
+    <div className="rounded-2xl border border-white/10 bg-white/5 overflow-hidden">
+      <div className="aspect-[16/9] bg-zinc-900/60 border-b border-white/10">
+        <img src={image} alt={title} className="w-full h-full object-cover" />
+      </div>
+      <div className="p-4">
+        <p className="font-medium">{title}</p>
+        {notes && <p className="text-sm text-zinc-400 mt-1">{notes}</p>}
+      </div>
+    </div>
+  );
+}
+
+function CTA() {
+  return (
+    <section id="contact" className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-16">
+      <div className="rounded-3xl border border-white/10 bg-gradient-to-r from-fuchsia-500/10 via-white/5 to-sky-500/10 p-10 text-center">
+        <h2 className="text-2xl sm:text-3xl font-semibold">프로젝트, 협업, 공연 제안</h2>
+        <p className="mt-3 text-zinc-300">간단한 소개와 함께 연락 주세요. 포트폴리오 링크도 환영합니다.</p>
+        <div className="mt-6 flex flex-col sm:flex-row items-center justify-center gap-3">
+          <a href="#social" className="inline-flex items-center justify-center rounded-2xl bg-white text-zinc-900 px-6 py-3 font-semibold hover:bg-zinc-200">소셜 보기</a>
+          <a href="#about" className="inline-flex items-center justify-center rounded-2xl border border-white/20 px-6 py-3 font-semibold hover:bg-white/10">연락처</a>
+        </div>
+      </div>
+    </section>
+  );
+}
+
+function Footer({ email }: { email: string }) {
+  return (
+    <footer className="border-t border-white/10 py-10 text-sm text-zinc-400">
+      <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 flex flex-col sm:flex-row items-center justify-between gap-4">
+        <p>© {new Date().getFullYear()} Eunseo Seol. All rights reserved.</p>
+        <div className="flex items-center gap-6">
+          <a href={`mailto:${email}`} className="hover:text-white">{email}</a>
+          <a href="#top" className="hover:text-white">Back to top</a>
+        </div>
+      </div>
+    </footer>
   );
 }
