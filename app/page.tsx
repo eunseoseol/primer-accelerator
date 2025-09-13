@@ -1,34 +1,34 @@
+"use client";
+
+import { useState } from "react";
+
 export default function EunseoSeolSite() {
   const data = {
     name: "Eunseo Seol",
     tagline: "Creator · Explorer · Builder",
-    avatar: "/eunseo/avatar.jpg", // put your photo at public/eunseo/avatar.jpg
+    avatar: "/eunseo/avatar.jpg",
     location: "Seoul, KR",
-    email: "hello@eunseoseol.com", // replace
+    email: "hello@eunseoseol.com",
     socials: [
       { label: "LinkedIn", href: "https://www.linkedin.com/in/eunseo-seol" },
       { label: "Instagram", href: "https://instagram.com/yourhandle" },
       { label: "YouTube", href: "https://youtube.com/@yourhandle" },
       { label: "X/Twitter", href: "https://x.com/yourhandle" },
     ],
-    // Music embeds (Spotify/Apple) — replace with your own IDs
     music: {
-      spotifyArtist: "", // e.g. 1vCWHaC5f2uS3yhpwWbIA6
-      spotifyPlaylist: "", // e.g. 37i9dQZF1DXcBWIGoYBM5M
-      soundcloudUser: "", // optional
+      spotifyArtist: "",
+      spotifyPlaylist: "",
+      soundcloudUser: "",
     },
-    // Videos — YouTube video or playlist URLs
     videos: [
       { title: "Showreel", url: "https://www.youtube.com/embed/VIDEO_ID" },
       { title: "Talk: Creativity", url: "https://www.youtube.com/embed/VIDEO_ID" },
     ],
-    // Books you've read — simple list to start; can be extended with covers
     books: [
       { title: "The Creative Act", author: "Rick Rubin" },
       { title: "Range", author: "David Epstein" },
       { title: "Atomic Habits", author: "James Clear" },
     ],
-    // News/RSS — add any RSS feeds you want to surface
     newsFeeds: [
       { label: "NYT Tech", url: "https://rss.nytimes.com/services/xml/rss/nyt/Technology.xml" },
       { label: "Hacker News", url: "https://hnrss.org/frontpage" },
@@ -74,7 +74,9 @@ export default function EunseoSeolSite() {
               이 사이트는 제 작업과 관심사를 한 곳에 모아 소개하는 <span className="text-white">개인 허브</span>예요.
             </p>
             <div className="mt-4 flex flex-wrap items-center gap-3 text-sm text-zinc-400">
-              <a href={`mailto:${data.email}`} className="rounded-xl border border-white/10 px-3 py-1.5 hover:bg-white hover:text-zinc-900">{data.email}</a>
+              <a href={`mailto:${data.email}`} className="rounded-xl border border-white/10 px-3 py-1.5 hover:bg-white hover:text-zinc-900">
+                {data.email}
+              </a>
               <span className="opacity-60">•</span>
               <span>{data.location}</span>
             </div>
@@ -119,7 +121,13 @@ export default function EunseoSeolSite() {
           {data.videos.map((v, i) => (
             <div key={i} className="rounded-2xl border border-white/10 overflow-hidden">
               <div className="aspect-video">
-                <iframe src={v.url} className="w-full h-full" title={v.title} allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowFullScreen />
+                <iframe
+                  src={v.url}
+                  className="w-full h-full"
+                  title={v.title}
+                  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                  allowFullScreen
+                />
               </div>
               <div className="p-4 text-sm text-zinc-300">{v.title}</div>
             </div>
@@ -141,7 +149,12 @@ export default function EunseoSeolSite() {
       <Section id="social" title="내 소셜 미디어">
         <div className="flex flex-wrap gap-3">
           {data.socials.map((s, i) => (
-            <a key={i} href={s.href} target="_blank" className="rounded-xl border border-white/10 px-4 py-2 hover:bg-white hover:text-zinc-900">
+            <a
+              key={i}
+              href={s.href}
+              target="_blank"
+              className="rounded-xl border border-white/10 px-4 py-2 hover:bg-white hover:text-zinc-900"
+            >
               {s.label}
             </a>
           ))}
@@ -149,10 +162,16 @@ export default function EunseoSeolSite() {
       </Section>
 
       <Section id="news" title="내 뉴스">
-        <p className="text-zinc-400 mb-4">관심 있는 RSS를 연결해 최신 글을 자동으로 끌어올 수 있어요. (정적 빌드에선 링크로, 서버/클라이언트에서 fetch하면 카드로 표시 가능)</p>
+        <p className="text-zinc-400 mb-4">
+          관심 있는 RSS를 연결해 최신 글을 자동으로 끌어올 수 있어요. (정적 빌드에선 링크로, 서버/클라이언트에서 fetch하면 카드로 표시 가능)
+        </p>
         <ul className="list-disc list-inside text-zinc-300">
           {data.newsFeeds.map((n, i) => (
-            <li key={i}><a className="underline decoration-white/20 hover:decoration-white" href={n.url} target="_blank">{n.label}</a></li>
+            <li key={i}>
+              <a className="underline decoration-white/20 hover:decoration-white" href={n.url} target="_blank">
+                {n.label}
+              </a>
+            </li>
           ))}
         </ul>
       </Section>
@@ -162,13 +181,17 @@ export default function EunseoSeolSite() {
           {data.career.map((c, i) => (
             <div key={i} className="rounded-2xl border border-white/10 p-4 bg-white/5">
               <div className="flex items-center justify-between gap-3">
-                <p className="font-medium">{c.role} · {c.company}</p>
+                <p className="font-medium">
+                  {c.role} · {c.company}
+                </p>
                 <p className="text-sm text-zinc-400">{c.period}</p>
               </div>
               <p className="mt-2 text-zinc-300">{c.summary}</p>
               <div className="mt-3 flex flex-wrap gap-2">
                 {c.tags.map((t, idx) => (
-                  <span key={idx} className="text-xs rounded-lg border border-white/10 px-2 py-1 text-zinc-400">{t}</span>
+                  <span key={idx} className="text-xs rounded-lg border border-white/10 px-2 py-1 text-zinc-400">
+                    {t}
+                  </span>
                 ))}
               </div>
             </div>
@@ -212,7 +235,9 @@ function Header({ name, tagline, socials, avatar }: any) {
             ["커리어", "#career"],
             ["자차·집", "#wheels-n-home"],
           ].map(([label, href]) => (
-            <a key={href} href={href} className="hover:text-white">{label}</a>
+            <a key={href} href={href} className="hover:text-white">
+              {label}
+            </a>
           ))}
         </nav>
         <p className="hidden sm:block text-sm text-zinc-400">{tagline}</p>
@@ -232,13 +257,20 @@ function Section({ id, title, children }: any) {
   );
 }
 
-function Masonry({ images }: { images: readonly string[] }) {
+function Masonry({ images }: { images: ReadonlyArray<string> }) {
   return (
-    <div className="columns-2 md:columns-3 gap-4 [column-fill:_balance]"><div className="contents">
-      {images.map((src, i) => (
-        <img key={i} src={src} alt="photo" className="mb-4 w-full rounded-2xl border border-white/10 hover:scale-[1.01] transition" />
-      ))}
-    </div></div>
+    <div className="columns-2 md:columns-3 gap-4 [column-fill:_balance]">
+      <div className="contents">
+        {images.map((src, i) => (
+          <img
+            key={i}
+            src={src}
+            alt="photo"
+            className="mb-4 w-full rounded-2xl border border-white/10 hover:scale-[1.01] transition"
+          />
+        ))}
+      </div>
+    </div>
   );
 }
 
@@ -270,10 +302,22 @@ function CTA() {
     <section id="contact" className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-16">
       <div className="rounded-3xl border border-white/10 bg-gradient-to-r from-fuchsia-500/10 via-white/5 to-sky-500/10 p-10 text-center">
         <h2 className="text-2xl sm:text-3xl font-semibold">프로젝트, 협업, 공연 제안</h2>
-        <p className="mt-3 text-zinc-300">간단한 소개와 함께 연락 주세요. 포트폴리오 링크도 환영합니다.</p>
+        <p className="mt-3 text-zinc-300">
+          간단한 소개와 함께 연락 주세요. 포트폴리오 링크도 환영합니다.
+        </p>
         <div className="mt-6 flex flex-col sm:flex-row items-center justify-center gap-3">
-          <a href="#social" className="inline-flex items-center justify-center rounded-2xl bg-white text-zinc-900 px-6 py-3 font-semibold hover:bg-zinc-200">소셜 보기</a>
-          <a href="#about" className="inline-flex items-center justify-center rounded-2xl border border-white/20 px-6 py-3 font-semibold hover:bg-white/10">연락처</a>
+          <a
+            href="#social"
+            className="inline-flex items-center justify-center rounded-2xl bg-white text-zinc-900 px-6 py-3 font-semibold hover:bg-zinc-200"
+          >
+            소셜 보기
+          </a>
+          <a
+            href="#about"
+            className="inline-flex items-center justify-center rounded-2xl border border-white/20 px-6 py-3 font-semibold hover:bg-white/10"
+          >
+            연락처
+          </a>
         </div>
       </div>
     </section>
@@ -286,8 +330,12 @@ function Footer({ email }: { email: string }) {
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 flex flex-col sm:flex-row items-center justify-between gap-4">
         <p>© {new Date().getFullYear()} Eunseo Seol. All rights reserved.</p>
         <div className="flex items-center gap-6">
-          <a href={`mailto:${email}`} className="hover:text-white">{email}</a>
-          <a href="#top" className="hover:text-white">Back to top</a>
+          <a href={`mailto:${email}`} className="hover:text-white">
+            {email}
+          </a>
+          <a href="#top" className="hover:text-white">
+            Back to top
+          </a>
         </div>
       </div>
     </footer>
