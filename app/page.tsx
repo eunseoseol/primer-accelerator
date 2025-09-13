@@ -74,7 +74,7 @@ export default function EunseoSeolSite() {
               이 사이트는 제 작업과 관심사를 한 곳에 모아 소개하는 <span className="text-white">개인 허브</span>예요.
             </p>
             <div className="mt-4 flex flex-wrap items-center gap-3 text-sm text-zinc-400">
-              <a href={`mailto:${data.email}`} className="rounded-xl border border-white/10 px-3 py-1.5 hover:bg-white hover:text-zinc-900">
+              <a href={`mailto:${data.email}`} className="rounded-xl border border-white/10 px-3 py-1.5 hover:bg:white hover:text-zinc-900">
                 {data.email}
               </a>
               <span className="opacity-60">•</span>
@@ -85,7 +85,8 @@ export default function EunseoSeolSite() {
       </Section>
 
       <Section id="photos" title="내 사진">
-        <Masonry images={data.assets.photos} />
+        {/* readonly 안전: 스프레드로 가변 배열 전달 */}
+        <Masonry images={[...data.assets.photos]} />
       </Section>
 
       <Section id="music" title="내 음악">
@@ -257,6 +258,7 @@ function Section({ id, title, children }: any) {
   );
 }
 
+/** Masonry는 ReadonlyArray<string>을 받도록 해서 as const와 호환 */
 function Masonry({ images }: { images: ReadonlyArray<string> }) {
   return (
     <div className="columns-2 md:columns-3 gap-4 [column-fill:_balance]">
