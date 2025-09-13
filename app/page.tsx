@@ -82,7 +82,9 @@ export default function EunseoSeolSite() {
         </div>
       </Section>
 
-
+      <Section id="photos" title="내 사진">
+        <Masonry images={data.assets.photos} />
+      </Section>
 
       <Section id="music" title="내 음악">
         <div className="grid md:grid-cols-2 gap-6">
@@ -230,7 +232,7 @@ function Section({ id, title, children }: any) {
   );
 }
 
-function Masonry({ images }: { images: string[] }) {
+function Masonry({ images }: { images: readonly string[] }) {
   return (
     <div className="columns-2 md:columns-3 gap-4 [column-fill:_balance]"><div className="contents">
       {images.map((src, i) => (
